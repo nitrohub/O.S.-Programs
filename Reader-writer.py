@@ -7,6 +7,7 @@ readcount = 0  # To keep a track of all the readers entered
 count = 0
 i=0 #For iterating through the count for reader1
 k=0 #For iterating through the count for reader2
+l=0 #For iterating through the count for reader3
 
 
 def wait(para):
@@ -123,6 +124,33 @@ class reader2(Thread):
         	msignal()
         	sleep(3)
 
+class reader3(Thread):
+    def run(self):
+        global s
+        global mutex
+        global readcount
+        global count
+        global l
+        while l<count:
+        	print("\nReader3 trying to Read!")
+        	# sleep(1)
+        	mwait()  # stopping other readers until readcount is being altered
+        	readcount = readcount + 1
+        	if readcount == 1:
+        	    wait("writer")  # locking the writer
+        	msignal()
+        	print("Number of reader in critical section:"+str(readcount))
+        	for j in range(l, count):
+        	    print("Reader 3 reading block" + str(j))
+        	    l=l+1
+        	    sleep(2)
+
+        	mwait()
+        	readcount = readcount - 1
+        	if readcount == 0:
+        		signal("writer")  # Releasing the writer
+        	msignal()
+        	sleep(3)
         
 
 
@@ -135,6 +163,8 @@ if __name__ == "__main__":
 	r1 = reader1().start()
 	sleep(1)
 	r2=reader2().start()
+	sleep(1)
+	r3=reader3().start()
 
 
 
