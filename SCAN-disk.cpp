@@ -45,13 +45,34 @@ using namespace std;
     //  printf("\nElement found at:%d",temp);
      if(dir=='R')
      {
+         for(int i=temp;i<=n;i++)
+         {
+           printf("\n\nTrack=%d got executed!\n",v[i]);
+         }
+         printf("\n\nHead is on track 199!");
          tracsTrav+=(199-v[temp]); //Last track 199(Since it is scan)
          if(temp!=0)
+                {
                 tracsTrav+=(199-v[0]);
+                for(int i=temp-1;i>=0;i--)
+                {
+                  printf("\n\nTrack=%d got executed!\n",v[i]);
+                }
+                }
      }else{
+       for(int i=temp;i>=0;i--)
+         {
+           printf("\n\nTrack=%d got executed!\n",v[i]);
+         }
+           printf("\n\nHead is on track no 0");
             tracsTrav+=(v[temp]-0);
-            if(temp!=n)
+            if(temp!=n){
                 tracsTrav+=(v[n]-0);
+                      for(int i=temp+1;i<=n;i++)
+                {
+                  printf("\n\nTrack=%d got executed!\n",v[i]);
+                }
+                        }
      }
 
      printf("\nTotal tracks travrsed=%d",tracsTrav);
