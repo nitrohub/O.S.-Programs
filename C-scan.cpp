@@ -43,15 +43,35 @@ using namespace std;
     
     if(temp!=n&&temp!=0)
     {
+      for(int i=temp;i<=n;i++)
+      {
+        printf("\n\nTrack=%d got executed!\n",v[i]);
+      }
+      printf("\nHead is on track 199\n");
       tracsTrav+=(199-v[temp]);
+      printf("\nHead is on track 0\n");
       tracsTrav+=(199-0);
+      for(int i=0;i<temp;i++)
+      {
+        printf("\nTrack no=%d got executed!\n",v[i]);
+      }
       tracsTrav+=(v[temp-1]-0);
     }else if(temp==n)
     {
-      tracsTrav+=(199-0);  //199->0
+       printf("\nHead is on track 199\n");
+       tracsTrav+=(199-0);  //199->0
+       printf("\nHead is on track 0\n");
       tracsTrav+=(v[temp-1]-0);  //0->lastrequest
+      for(int i=0;i<temp;i++)
+      {
+        printf("\nTrack=%d got executed!\n",v[i]);
+      }
     }else if(temp==0){
       tracsTrav+=(v[n]-0);  //0->last element
+      for(int i=0;i<=n;i++)
+      {
+        printf("\nTrack=%d got executed!",v[i]);
+      }
     }
 
      printf("\nTotal tracks travrsed=%d",tracsTrav);
