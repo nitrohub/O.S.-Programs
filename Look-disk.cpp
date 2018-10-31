@@ -48,10 +48,28 @@ using namespace std;
     
     if(dir=='R')
     {
+      for (int i=temp;i<=n;i++)
+      {
+        printf("\n\nTrack no=%d got executed!",v[i]);
+      }
+
       tracsTrav+=(v[n]-v[temp]);
+
       tracsTrav+=(v[n]-v[0]);
+      for (int i=temp-1;i>=0;i--)
+      {
+        printf("\n\nTrack no=%d got executed!",v[i]);
+      }
     }else{
+      for (int i=temp;i>=0;i--)
+      {
+        printf("\n\nTrack no=%d got executed!",v[i]);
+      }
           tracsTrav+=(v[temp]-v[0]);
+          for (int i=temp+1;i<=n;i++)
+      {
+        printf("\n\nTrack no=%d got executed!",v[i]);
+      }
           tracsTrav+=(v[n]-v[0]);
     }
 
